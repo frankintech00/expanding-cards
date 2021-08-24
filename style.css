@@ -1,0 +1,74 @@
+/* import fonts from google fonts
+  Change the name of the font in the url to desired font
+*/
+
+@import url("https://fonts.googleapis.com/css?family=Poppins&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+
+/* global styles for the body
+  display:flex is used to position child elements */
+body {
+  font-family: "Poppins", sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  overflow: scroll;
+  margin: 0;
+}
+
+.expandingCards {
+  display: flex;
+  width: 90vw;
+}
+
+.card {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 70vh;
+  border-radius: 20px;
+  color: #fff;
+  cursor: pointer;
+  flex: 0.5;
+  margin: 10px;
+  /* position relative is used to enable placement of the h3 element */
+  position: relative;
+  -webkit-transition: all 500ms ease-in;
+}
+
+.card h3 {
+  font-size: 24px;
+  /* position absolute is used to position the h3 element. It positions the element in relation to the last relative positioned element */
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  margin: 0;
+  opacity: 0;
+}
+
+.card.active {
+  flex: 5;
+}
+
+.card.active h3 {
+  opacity: 1;
+  transition: opacity 0.3s ease-in 0.4s;
+}
+
+/* this hides tow of the cards at small screen size to aid in viewing */
+@media (max-width: 480px) {
+  .container {
+    width: 100vw;
+  }
+
+  /* selects the 4th and 5th card and hides them */
+  .card:nth-of-type(4),
+  .card:nth-of-type(5) {
+    display: none;
+  }
+}
